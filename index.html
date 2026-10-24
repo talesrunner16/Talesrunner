@@ -121,4 +121,242 @@
         .tooltip-target {
             color: #a78bfa;
             font-weight: 700;
-            text
+            text-decoration: underline;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip-box {
+            visibility: hidden;
+            opacity: 0;
+            width: 280px;
+            background-color: #0f172a;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 8px;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 0.3s, visibility 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            text-align: center;
+        }
+
+        .tooltip-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .tooltip-box::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -8px;
+            border-width: 8px;
+            border-style: solid;
+            border-color: var(--primary) transparent transparent transparent;
+        }
+
+        .tooltip-target:hover .tooltip-box,
+        .tooltip-target.active .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .form-section {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-box {
+            background: #090d16;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #e2e8f0;
+            border: 1px solid #1e293b;
+            user-select: all;
+            margin-bottom: 10px;
+            white-space: pre-line;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-copy {
+            background: var(--primary);
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .btn-copy:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-kakao {
+            background: var(--kakao-yellow);
+            color: var(--kakao-text);
+        }
+
+        .btn-kakao:hover {
+            background: #fdd800;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(16, 185, 129, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .header h1 {
+                font-size: 20px;
+            }
+            .tooltip-box {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>💫 점령전 진행 안내 사항 ✏️</h1>
+            <div class="subtitle">테일즈런너 점령전 예약 및 진행 규칙입니다.</div>
+        </div>
+
+        <div class="notice-list">
+            <div class="notice-item">
+                <div class="icon">✅</div>
+                <div class="content">초심의존으로 진행</div>
+            </div>
+
+            <div class="notice-item">
+                <div class="icon">✅</div>
+                <div class="content">
+                    보수 : <span class="price-tag">1.6</span>
+                    <div class="sub-desc">✨ 점령전 종료 후 점수 캡쳐본을 받으시고 입금 주시면 됩니다.</div>
+                </div>
+            </div>
+
+            <div class="notice-item">
+                <div class="icon">✅</div>
+                <div class="content">
+                    달리기 길드 스킬은 <strong>[탈진 지속 감소 / 대시 발판 지속 증가]</strong>를 제외하고 
+                    <span class="tooltip-target" id="imgTooltip">
+                        [사진]
+                        <span class="tooltip-box">
+                            <img src="guild-skill.png" alt="길드 스킬 배치 사진" onerror="this.src='https://via.placeholder.com/300x220/1e293b/ffffff?text=guild-skill.png+이미지+필요';">
+                        </span>
+                    </span>과 동일하게 찍어주세요.
+                    <div class="sub-desc">※ [사진] 글자에 마우스를 올리거나 터치하면 이미지를 확인하실 수 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="notice-item">
+                <div class="icon">✅</div>
+                <div class="content">점령에 사용할 계정이 확정 되는대로 길마님과 공유합니다.</div>
+            </div>
+
+            <div class="notice-item highlight">
+                <div class="icon">⚠️</div>
+                <div class="content">
+                    예약 취소는 점령전 진행 2일 전 <strong>[목요일]</strong> 까지만 가능합니다.
+                    <div class="sub-desc">※ 점령전 진행 당일 예약 취소 시 이후 예약을 받지 않습니다.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-title">🌈 예약을 원하시는 경우 아래 양식을 복사해 주세요!</div>
+            <div class="form-box" id="formText">- 예약 날짜 : 
+- 길드명 : </div>
+            
+            <button class="btn btn-copy" onclick="copyForm()">
+                📋 양식 복사하기
+            </button>
+            
+            <a href="https://open.kakao.com/o/saAwRyTi" target="_blank" rel="noopener noreferrer" class="btn btn-kakao">
+                💬 카카오톡 오픈채팅 문의하기
+            </a>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">양식이 복사되었습니다! 오픈채팅에 붙여넣어 주세요.</div>
+
+    <script>
+        function copyForm() {
+            const formText = document.getElementById('formText').innerText;
+            navigator.clipboard.writeText(formText).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        }
+
+        // 모바일 터치 대응
+        const tooltipTarget = document.getElementById('imgTooltip');
+        tooltipTarget.addEventListener('click', function(e) {
+            this.classList.toggle('active');
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', function() {
+            tooltipTarget.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
