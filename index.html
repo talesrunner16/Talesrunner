@@ -4,110 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>점령전 진행 안내 사항</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Noto Sans KR / Montserrat Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        tr: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#6366f1',
+                            neon: '#38bdf8',
+                            kakao: '#FEE500',
+                            kakaotext: '#191919'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --primary: #8b5cf6;
-            --primary-hover: #7c3aed;
-            --accent: #f43f5e;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --kakao-yellow: #FEE500;
-            --kakao-text: #191919;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background-color: #0b0f19;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .glow-box {
+            box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.25);
+        }
+        .glow-text {
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border-color);
-        }
-
-        .header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed var(--border-color);
-            margin-bottom: 25px;
-        }
-
-        .header h1 {
-            font-size: 24px;
-            color: var(--text-main);
-            font-weight: 800;
-        }
-
-        .notice-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .notice-item {
-            background: rgba(15, 23, 42, 0.6);
-            padding: 16px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary);
-            font-size: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .notice-item.highlight {
-            border-left-color: var(--accent);
-            background: rgba(244, 63, 94, 0.1);
-        }
-
-        .notice-item .icon {
-            font-size: 18px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .notice-item .content {
-            flex-grow: 1;
-        }
-
-        .price-tag {
-            font-weight: 800;
-            color: var(--accent);
-            font-size: 18px;
-        }
-
-        .sub-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        /* 크고 선명해진 호버 이미지 툴팁 */
+        /* 크고 선명한 마우스 호버/터치 이미지 툴팁 */
         .tooltip-target {
             color: #a78bfa;
             font-weight: 700;
@@ -120,26 +63,26 @@
         .tooltip-box {
             visibility: hidden;
             opacity: 0;
-            width: 420px;
+            width: 440px;
             max-width: 85vw;
             background-color: #0f172a;
-            border: 2px solid var(--primary);
-            border-radius: 12px;
+            border: 2px solid #6366f1;
+            border-radius: 16px;
             padding: 8px;
             position: absolute;
             z-index: 100;
-            bottom: 125%;
+            bottom: 130%;
             left: 50%;
             transform: translateX(-50%);
             transition: opacity 0.3s, visibility 0.3s;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
             text-align: center;
         }
 
         .tooltip-box img {
             width: 100%;
             height: auto;
-            border-radius: 6px;
+            border-radius: 10px;
             display: block;
         }
 
@@ -151,7 +94,7 @@
             margin-left: -8px;
             border-width: 8px;
             border-style: solid;
-            border-color: var(--primary) transparent transparent transparent;
+            border-color: #6366f1 transparent transparent transparent;
         }
 
         .tooltip-target:hover .tooltip-box,
@@ -159,182 +102,205 @@
             visibility: visible;
             opacity: 1;
         }
-
-        .form-section {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .form-title {
-            font-size: 15px;
-            font-weight: 700;
-            color: #38bdf8;
-            margin-bottom: 12px;
-        }
-
-        .form-box {
-            background: #090d16;
-            padding: 12px 15px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 14px;
-            color: #e2e8f0;
-            border: 1px solid #1e293b;
-            user-select: all;
-            margin-bottom: 10px;
-            white-space: pre-line;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-copy {
-            background: var(--primary);
-            color: white;
-            margin-bottom: 12px;
-        }
-
-        .btn-copy:hover {
-            background: var(--primary-hover);
-        }
-
-        .btn-kakao {
-            background: var(--kakao-yellow);
-            color: var(--kakao-text);
-        }
-
-        .btn-kakao:hover {
-            background: #fdd800;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: rgba(16, 185, 129, 0.9);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-        }
-
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px 15px;
-            }
-            .header h1 {
-                font-size: 20px;
-            }
-            .tooltip-box {
-                width: 300px;
-            }
-        }
     </style>
 </head>
-<body>
+<body class="min-h-screen text-slate-100 font-sans flex flex-col items-center justify-center p-4 sm:p-6">
 
-    <div class="container">
-        <div class="header">
-            <h1>💫 안내사항 ✏️</h1>
-        </div>
-
-        <div class="notice-list">
-            <div class="notice-item">
-                <div class="icon">☑️</div>
-                <div class="content">초심의 존으로 진행</div>
-            </div>
-
-            <div class="notice-item">
-                <div class="icon">☑️</div>
-                <div class="content">
-                    보수 : <span class="price-tag">1.6</span>
-                    <div class="sub-desc">✨ 점령전 종료 후 점수 캡쳐본을 받으시고 입금 주시면 됩니다</div>
-                </div>
-            </div>
-
-            <div class="notice-item">
-                <div class="icon">☑️</div>
-                <div class="content">
-                    달리기 길드 스킬은 [탈진 지속 감소/대시 발판 지속 증가] 를 제외하고 
-                    <span class="tooltip-target" id="imgTooltip">
-                        사진
-                        <span class="tooltip-box">
-                            <img src="guild-skill.png" alt="길드 스킬 사진">
-                        </span>
-                    </span>과 동일하게 찍어주세요
-                </div>
-            </div>
-
-            <div class="notice-item">
-                <div class="icon">☑️</div>
-                <div class="content">점령에 사용할 계정이 확정 되는대로 길마님과 공유합니다</div>
-            </div>
-
-            <div class="notice-item">
-                <div class="icon">☑️</div>
-                <div class="content">예약 취소는 점령전 진행 2일 전 [목요일] 까지만 가능합니다</div>
-            </div>
-
-            <div class="notice-item highlight">
-                <div class="icon">☑️</div>
-                <div class="content">점령전 진행 당일 예약 취소시 이후 예약을 받지 않습니다</div>
-            </div>
-        </div>
-
-        <div class="form-section">
-            <div class="form-title">🌈 예약을 원하시는 경우 아래의 양식을 복붙하여 작성 후 보내주세요!</div>
-            <div class="form-box" id="formText">- 예약 날짜 : 
-- 길드명 : </div>
-            
-            <button class="btn btn-copy" onclick="copyForm()">
-                📋 양식 복사하기
-            </button>
-            
-            <a href="https://open.kakao.com/o/saAwRyTi" target="_blank" rel="noopener noreferrer" class="btn btn-kakao">
-                💬 카카오톡 오픈채팅으로 신청하기
-            </a>
-        </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-3 rounded-full shadow-2xl font-bold text-sm transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center space-x-2">
+        <i class="fa-solid fa-circle-check text-green-400"></i>
+        <span id="toast-msg">양식이 클립보드에 복사되었습니다!</span>
     </div>
 
-    <div class="toast" id="toast">양식이 복사되었습니다! 카톡방에 붙여넣어 주세요.</div>
+    <!-- Main Container -->
+    <main class="w-full max-w-2xl bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-3xl p-6 sm:p-8 md:p-10 glow-box relative overflow-hidden shadow-2xl my-8">
+        
+        <!-- Top Decor Banner -->
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Header -->
+        <header class="text-center pb-8 border-b border-slate-800">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
+                <i class="fa-solid fa-trophy text-amber-400"></i>
+                <span>TALES RUNNER CONQUEST BATTLE</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight glow-text flex items-center justify-center gap-2">
+                <span>💫</span> 점령전 진행 안내 사항 <span>✏️</span>
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 font-medium">
+                테일즈런너 점령전 진행 관련 규칙 및 예약 안내입니다.
+            </p>
+        </header>
+
+        <!-- Highlight Key Info Banner -->
+        <section class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Mode Badges -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4 flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-running"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">진행 방식</span>
+                    <span class="text-lg font-bold text-white">초심의 존으로 진행</span>
+                </div>
+            </div>
+
+            <!-- Price Badge -->
+            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4 flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl shrink-0">
+                    <i class="fa-solid fa-coins"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">보수 비용</span>
+                    <span class="text-lg font-bold text-amber-300">1.6 만원</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Details Cards -->
+        <section class="mt-8 space-y-4">
+            <h2 class="text-lg font-bold text-slate-200 flex items-center gap-2">
+                <i class="fa-solid fa-clipboard-check text-indigo-400"></i> 필수 안내 사항
+            </h2>
+
+            <!-- Payment Rule -->
+            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-check-circle text-sky-400 text-lg mt-0.5"></i>
+                    <div>
+                        <h3 class="font-bold text-white text-base">보수 및 정산</h3>
+                        <p class="text-slate-300 text-sm mt-1 leading-relaxed">
+                            • 점령전 종료 후 <strong class="text-indigo-300">점수 캡쳐본을 받으시고 입금</strong> 주시면 됩니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guild Skill Rule -->
+            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-check-circle text-sky-400 text-lg mt-0.5"></i>
+                    <div>
+                        <h3 class="font-bold text-white text-base">달리기 길드 스킬 세팅</h3>
+                        <p class="text-slate-300 text-sm mt-1 leading-relaxed">
+                            • <span class="text-rose-400 font-semibold">[탈진 지속 감소/대시 발판 지속 증가]</span> 를 제외하고 
+                            <span class="tooltip-target" id="imgTooltip">
+                                [사진]
+                                <span class="tooltip-box">
+                                    <img src="guild-skill.png" alt="길드 스킬 사진" onerror="this.src='https://via.placeholder.com/400x300/1e293b/ffffff?text=guild-skill.png+사진+올리기';">
+                                </span>
+                            </span>과 동일하게 찍어주세요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Sharing -->
+            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-check-circle text-sky-400 text-lg mt-0.5"></i>
+                    <div>
+                        <h3 class="font-bold text-white text-base">계정 정보 공유</h3>
+                        <p class="text-slate-300 text-sm mt-1 leading-relaxed">
+                            • 점령에 사용할 계정이 확정 되는대로 길마님과 공유합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cancellation Rules -->
+            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-400 text-lg mt-0.5"></i>
+                    <div>
+                        <h3 class="font-bold text-white text-base">예약 취소 규정</h3>
+                        <p class="text-slate-300 text-sm mt-1 leading-relaxed">
+                            • 예약 취소는 점령전 진행 2일 전 <span class="bg-slate-700 px-2 py-0.5 rounded text-amber-300 font-bold">[목요일]</span> 까지만 가능합니다.<br>
+                            • <strong class="text-rose-400">점령전 진행 당일 예약 취소시</strong> 이후 예약을 받지 않습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservation Form Section -->
+        <section class="mt-8 bg-slate-950/70 border border-indigo-500/30 rounded-2xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-base font-bold text-white flex items-center gap-2">
+                    <span>🌈</span> 예약 신청 양식
+                </h2>
+                <span class="text-xs text-slate-400">아래 양식을 복사하여 작성해주세요</span>
+            </div>
+
+            <!-- Copyable Box -->
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 font-mono text-sm text-indigo-200 select-all relative group">
+                <p id="form-text" class="whitespace-pre-line leading-relaxed">- 예약 날짜 : 
+- 길드명 : </p>
+            </div>
+
+            <button onclick="copyFormText()" class="w-full mt-3 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20">
+                <i class="fa-regular fa-copy"></i>
+                <span>양식 복사하기</span>
+            </button>
+        </section>
+
+        <!-- CTA Action Section -->
+        <section class="mt-8 text-center space-y-4">
+            <p class="text-xs text-slate-400">
+                예약을 원하시는 경우 양식을 복사하신 후 오픈채팅으로 보내주세요!
+            </p>
+            
+            <!-- OpenChat Link Button -->
+            <a href="https://open.kakao.com/o/saAwRyTi" target="_blank" rel="noopener noreferrer" class="block w-full bg-tr-kakao hover:bg-yellow-300 text-tr-kakaotext font-extrabold py-4 px-6 rounded-2xl text-lg transition duration-200 transform hover:-translate-y-0.5 shadow-xl flex items-center justify-center space-x-3">
+                <i class="fa-solid fa-comment text-2xl"></i>
+                <span>카카오톡 오픈채팅으로 신청하기</span>
+            </a>
+        </section>
+
+        <!-- Footer Info -->
+        <footer class="mt-10 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+            <p>© Tales Runner Conquest Battle Notice.</p>
+        </footer>
+
+    </main>
 
     <script>
-        function copyForm() {
-            const formText = document.getElementById('formText').innerText;
-            navigator.clipboard.writeText(formText).then(() => {
-                const toast = document.getElementById('toast');
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2000);
-            });
+        function copyFormText() {
+            const formText = `- 예약 날짜 : \n- 길드명 : `;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = formText;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast("양식이 성공적으로 복사되었습니다!");
+            } catch (err) {
+                showToast("복사에 실패했습니다. 직접 선택해 복사해주세요.");
+            } finally {
+                document.body.removeChild(textarea);
+            }
         }
 
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        // 모바일 터치 대응
         const tooltipTarget = document.getElementById('imgTooltip');
         tooltipTarget.addEventListener('click', function(e) {
             this.classList.toggle('active');
