@@ -3,232 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테일즈런너 점령전 보수 안내</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Noto Sans KR / Montserrat Google Fonts -->
+    <title>테일즈런너 점령전 진행 안내 사항</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Noto Sans KR', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        tr: {
-                            bg: '#0f172a',
-                            card: '#1e293b',
-                            accent: '#6366f1',
-                            neon: '#38bdf8',
-                            kakao: '#FEE500',
-                            kakaotext: '#191919'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #8b5cf6;
+            --primary-hover: #7c3aed;
+            --accent: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --kakao-yellow: #FEE500;
+            --kakao-text: #191919;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
         body {
-            background-color: #0b0f19;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.15) 0px, transparent 50%);
-            background-attachment: fixed;
-        }
-        .glow-box {
-            box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.25);
-        }
-        .glow-text {
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-        }
-    </style>
-</head>
-<body class="min-h-screen text-slate-100 font-sans flex flex-col items-center justify-center p-4 sm:p-6">
-
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-3 rounded-full shadow-2xl font-bold text-sm transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center space-x-2">
-        <i class="fa-solid fa-circle-check text-green-400"></i>
-        <span id="toast-msg">양식이 클립보드에 복사되었습니다!</span>
-    </div>
-
-    <!-- Main Container -->
-    <main class="w-full max-w-2xl bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-3xl p-6 sm:p-8 md:p-10 glow-box relative overflow-hidden shadow-2xl my-8">
-        
-        <!-- Top Decor Banner -->
-        <div class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Header -->
-        <header class="text-center pb-8 border-b border-slate-800">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
-                <i class="fa-solid fa-trophy text-amber-400"></i>
-                <span>TALES RUNNER CONQUEST BATTLE</span>
-            </div>
-            <h1 class="text-3xl sm:text-4xl font-black text-white tracking-tight glow-text flex items-center justify-center gap-2">
-                <span>⭐</span> 점령전 보수 안내 <span>✏️</span>
-            </h1>
-            <p class="text-slate-400 text-sm sm:text-base mt-2 font-medium">
-                테일즈런너 점령전 용병/보수 신청을 위한 안내 사항입니다.
-            </p>
-        </header>
-
-        <!-- Highlight Key Info Banner -->
-        <section class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <!-- Mode Badges -->
-            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4 flex items-center space-x-4">
-                <div class="w-12 h-12 rounded-xl bg-indigo-600/20 text-indigo-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-running"></i>
-                </div>
-                <div>
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">진행 방식</span>
-                    <span class="text-lg font-bold text-white">초심의존으로 진행</span>
-                </div>
-            </div>
-
-            <!-- Price Badge -->
-            <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-4 flex items-center space-x-4">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl shrink-0">
-                    <i class="fa-solid fa-coins"></i>
-                </div>
-                <div>
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block">보수 비용</span>
-                    <span class="text-lg font-bold text-amber-300">1.6 만원</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Details Cards -->
-        <section class="mt-8 space-y-4">
-            <h2 class="text-lg font-bold text-slate-200 flex items-center gap-2">
-                <i class="fa-solid fa-clipboard-check text-indigo-400"></i> 필수 체크사항
-            </h2>
-
-            <!-- Guild Skill Rule -->
-            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
-                <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-check-circle text-sky-400 text-lg mt-0.5"></i>
-                    <div>
-                        <h3 class="font-bold text-white text-base">달리기 길드 스킬 세팅</h3>
-                        <p class="text-slate-300 text-sm mt-1 leading-relaxed">
-                            <span class="text-rose-400 font-semibold">[탈진 지속 감소 / 대시 발판 지속 증가]</span> 를 <strong class="text-amber-300">제외</strong>하고 사진과 동일하게 찍어주세요.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Payment Rule -->
-            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
-                <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-check-circle text-sky-400 text-lg mt-0.5"></i>
-                    <div>
-                        <h3 class="font-bold text-white text-base">정산 및 계정 공유</h3>
-                        <p class="text-slate-300 text-sm mt-1 leading-relaxed">
-                            • 점령에 사용할 계정이 확정되는 대로 길마님과 공유합니다.<br>
-                            • 점령전 종료 후 <strong class="text-indigo-300">점수 캡쳐본을 받으시고 입금</strong> 주시면 됩니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cancellation Rules -->
-            <div class="bg-slate-800/40 border border-slate-800 rounded-2xl p-5 hover:border-slate-700 transition">
-                <div class="flex items-start gap-3">
-                    <i class="fa-solid fa-triangle-exclamation text-amber-400 text-lg mt-0.5"></i>
-                    <div>
-                        <h3 class="font-bold text-white text-base">예약 취소 및 페널티 규정</h3>
-                        <p class="text-slate-300 text-sm mt-1 leading-relaxed">
-                            • 예약 취소는 점령전 진행 2일 전 <span class="bg-slate-700 px-2 py-0.5 rounded text-amber-300 font-bold">[목요일]</span> 까지만 가능합니다.<br>
-                            • <strong class="text-rose-400">점령전 진행 당일 예약 취소 시</strong> 이후 예약을 받지 않습니다.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reservation Form Section -->
-        <section class="mt-8 bg-slate-950/70 border border-indigo-500/30 rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-                <h2 class="text-base font-bold text-white flex items-center gap-2">
-                    <span>🌈</span> 예약 신청 양식
-                </h2>
-                <span class="text-xs text-slate-400">아래 양식을 복사해주세요</span>
-            </div>
-
-            <!-- Copyable Box -->
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 font-mono text-sm text-indigo-200 select-all relative group">
-                <p id="form-text" class="whitespace-pre-line leading-relaxed">- 예약 날짜 : 
-- 길드명 : </p>
-            </div>
-
-            <button onclick="copyFormText()" class="w-full mt-3 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/20">
-                <i class="fa-regular fa-copy"></i>
-                <span>양식 복사하기</span>
-            </button>
-        </section>
-
-        <!-- CTA Action Section -->
-        <section class="mt-8 text-center space-y-4">
-            <p class="text-xs text-slate-400">
-                예약을 원하시는 경우 아래 버튼을 눌러 카카오톡 오픈채팅으로 양식을 작성하여 보내주세요!
-            </p>
-            
-            <!-- OpenChat Link Button -->
-            <a href="https://open.kakao.com/o/saAwRyTi" target="_blank" rel="noopener noreferrer" class="block w-full bg-tr-kakao hover:bg-yellow-300 text-tr-kakaotext font-extrabold py-4 px-6 rounded-2xl text-lg transition duration-200 transform hover:-translate-y-0.5 shadow-xl flex items-center justify-center space-x-3">
-                <i class="fa-solid fa-comment text-2xl"></i>
-                <span>카카오톡 오픈채팅으로 신청하기</span>
-            </a>
-        </section>
-
-        <!-- Footer Info -->
-        <footer class="mt-10 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
-            <p>© Tales Runner Conquest Battle Mercenary Service. All rights reserved.</p>
-        </footer>
-
-    </main>
-
-    <script>
-        function copyFormText() {
-            const formText = `- 예약 날짜 : \n- 길드명 : `;
-            
-            // Fallback for clipboard copy in nested iframe environments
-            const textarea = document.createElement('textarea');
-            textarea.value = formText;
-            textarea.style.position = 'fixed';
-            textarea.style.opacity = '0';
-            document.body.appendChild(textarea);
-            textarea.select();
-            
-            try {
-                document.execCommand('copy');
-                showToast("양식이 성공적으로 복사되었습니다!");
-            } catch (err) {
-                showToast("복사에 실패했습니다. 직접 선택해 복사해주세요.");
-            } finally {
-                document.body.removeChild(textarea);
-            }
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-msg');
-            toastMsg.innerText = message;
-            
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            toast.classList.add('opacity-100');
-            
-            setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0', 'pointer-events-none');
-            }, 2500);
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
         }
-    </script>
-</body>
-</html>
+
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: var(--text-main);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        .notice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .notice-item {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            font-size: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .notice-item.highlight {
+            border-left-color: var(--accent);
+            background: rgba(244, 63, 94, 0.1);
+        }
+
+        .notice-item .icon {
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .notice-item .content {
+            flex-grow: 1;
+        }
+
+        .price-tag {
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        .sub-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Hover Image Tooltip Styling */
+        .tooltip-target {
+            color: #a78bfa;
+            font-weight: 700;
+            text
